@@ -30,21 +30,25 @@ class NumpyArrayType(BaseType):
         self.ndim = ndim
 
     def to_primitive(self, value):
-        return repr(value)
+        return repr(value.tolist())
 
     def to_native(self, value):
         # deserialise the value if it's a string
-        if isinstance(value, basestring):
-            value = eval(value)
+        try:
+            if isinstance(value, basestring):
+                value = eval(value)
 
-        # convert to np array, if not already
-        array = np.array(value, dtype=self.dtype)
+            # convert to np array, if not already
+            array = np.array(value, dtype=self.dtype)
+        except:
+            raise ConversionError(self.messages['convert_type'])
 
         # apply our shape to the data
-        try:
-            array.shape = self.shape
-        except:
-            raise ConversionError(self.messages['convert_shape'])
+        if self.shape:
+            try:
+                array.shape = self.shape
+            except:
+                raise ConversionError(self.messages['convert_shape'])
         return array
 
     def convert(self, value):
