@@ -3,8 +3,8 @@
 import unittest
 
 from schematics.models import Model
-from schematics.contrib.numpy import NumpyArrayType
 from schematics.exceptions import ValidationError, ConversionError
+from npschematics.types import NumpyArrayType
 
 import numpy as np
 
