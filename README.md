@@ -38,6 +38,7 @@ This is a simple Model with Schamtics and NpSchematics.
   >>> from schematics.models import Model
   >>> from schematics.types import StringType, URLType
   >>> from npschematics.types import NumpyArrayType
+  >>> import numpy as np
   >>> class Person(Model):
   ...     name = StringType(required=True)
   ...     website = URLType()
