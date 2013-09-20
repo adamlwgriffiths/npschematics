@@ -2,11 +2,9 @@
 NpSchematics
 ============
 
-.. rubric:: Numpy types for Schematics.
+Numpy types for Schematics.
 
-.. image:: https://secure.travis-ci.org/adamlwgriffiths/npschematics.png?branch=master
-  :target: https://secure.travis-ci.org/adamlwgriffiths/npschematics
-  :alt: Build Status
+[![Build Status](https://travis-ci.org/adamlwgriffiths/npschematics.png?branch=master)](https://travis-ci.org/adamlwgriffiths/npschematics)
 
 
 About
@@ -25,10 +23,10 @@ writing the query.
 Further, it can be used for a range of tasks where having a database involved
 may not make sense.
 
-Some common use cases:
+Benefits of using Numpy Schematics Types:
 
-+ Enforce array dtype, size, shape, dimensions.
-+ Serialise / deserialise models
++ Enforce Numpy properties: dtype, size, shape, ndim.
++ Serialise / deserialise data
 
 
 Examples
@@ -36,8 +34,7 @@ Examples
 
 This is a simple Model with Schamtics and NpSchematics.
 
-::
-
+```
   >>> from schematics.models import Model
   >>> from schematics.types import StringType, URLType
   >>> from npschematics.types import NumpyArrayType
@@ -52,19 +49,19 @@ This is a simple Model with Schamtics and NpSchematics.
   u'Joe Strummer'
   >>> person.ratings
   [0, 0, 0, 0, 0]
+```
 
 Serializing the data to JSON.
 
-::
-
+```
   >>> import json
   >>> json.dumps(person.to_primitive())
   {"name": "Joe Strummer", "website": "http://soundcloud.com/joestrummer", "ratings": "[0, 0, 0, 0, 0]"}
+```
 
 Let's try validating with an invalid shape.
 
-::
-
+```
   >>> person = Person()
   >>> person.ratings = [1,2,3]
   >>> person.validate()
@@ -73,15 +70,15 @@ Let's try validating with an invalid shape.
     File "schematics/models.py", line 231, in validate
       raise ModelConversionError(e.messages)
   schematics.exceptions.ModelConversionError: {'ratings': [u'Could not convert shape']}
-
+```
 
 Add the field and validation passes
 
-::
-
+```
   >>> person = Person()
   >>> person.name = 'Amon Tobin'
   >>> person.website = 'http://www.amontobin.com/'
   >>> person.ratings = [1,2,3,4,5]
   >>> person.validate()
   >>> 
+```
