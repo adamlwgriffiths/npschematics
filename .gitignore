@@ -1,0 +1,15 @@
+.DS_Store
+*.pyc
+*.bak
+*.swp
+*.*~
+.ropeproject
+./#*
+MANIFEST
+build
+dist
+PLANS.md
+*.egg-info
+venv
+docs/_build
+tests/__pycache__
