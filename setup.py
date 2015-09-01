@@ -11,7 +11,6 @@ setup(
     version=__version__,
     description='Numpy Types for Schematics',
     author=u'Adam Griffiths',
-    author_email='adam.lw.griffiths@gmail.com',
     url='http://github.com/adamlwgriffiths/npschematics',
     requires = ['schematics', 'numpy'],
     packages=['npschematics'],
